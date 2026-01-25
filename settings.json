@@ -1,0 +1,25 @@
+{
+    // Clangd configuration
+    "clangd.arguments": [
+        "--compile-commands-dir=${workspaceFolder}/niu/build",
+        "--background-index",
+        "--clang-tidy"
+    ],
+    
+    // Terminal auto-activation
+    "python.terminal.activateEnvironment": true,
+    "terminal.integrated.env.windows": {
+        "VIRTUAL_ENV": "${workspaceFolder}/.venv"
+    },
+    "terminal.integrated.profiles.windows": {
+        "PowerShell (venv)": {
+            "source": "PowerShell",
+            "args": [
+                "-NoExit",
+                "-Command",
+                "& { if (Test-Path '${workspaceFolder}/.venv/Scripts/Activate.ps1') { & '${workspaceFolder}/.venv/Scripts/Activate.ps1' } }"
+            ]
+        }
+    },
+    "terminal.integrated.defaultProfile.windows": "PowerShell (venv)"
+}
