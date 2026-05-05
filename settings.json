@@ -7,19 +7,30 @@
     ],
     
     // Terminal auto-activation
+    // 自动查找 west 所在的虚拟环境并激活，无需硬编码路径
     "python.terminal.activateEnvironment": true,
     "terminal.integrated.env.windows": {
-        "VIRTUAL_ENV": "${workspaceFolder}/.venv"
+        "WORKSPACE_ROOT": "${workspaceFolder}"
     },
     "terminal.integrated.profiles.windows": {
-        "PowerShell (venv)": {
+        "PowerShell (west-venv)": {
             "source": "PowerShell",
             "args": [
                 "-NoExit",
                 "-Command",
-                "& { if (Test-Path '${workspaceFolder}/.venv/Scripts/Activate.ps1') { & '${workspaceFolder}/.venv/Scripts/Activate.ps1' } }"
+                "$ok=$false;",
+                "$local=\"$env:WORKSPACE_ROOT\\.venv\\Scripts\\Activate.ps1\";",
+                "if(Test-Path $local){ & $local; $ok=$true }",
+                "else {",
+                "  foreach($w in (Get-Command -All west -EA SilentlyContinue)){",
+                "    $a=Join-Path (Split-Path $w.Source) 'Activate.ps1';",
+                "    if(Test-Path $a){& $a; $ok=$true; break}",
+                "  }",
+                "};",
+                "if(-not $ok){Write-Host 'No west venv found, skipping activation' -ForegroundColor Yellow};",
+                "Set-Location \"$env:WORKSPACE_ROOT\""
             ]
         }
     },
-    "terminal.integrated.defaultProfile.windows": "PowerShell (venv)"
+    "terminal.integrated.defaultProfile.windows": "PowerShell (west-venv)"
 }
