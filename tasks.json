@@ -22,6 +22,8 @@
     },
     {
       "label": "Start Serial Monitor (COM12)",
+      "dependsOn": ["Stop Serial Monitor"],
+      "dependsOrder": "sequence",
       "type": "shell",
       "command": "d:\\AI_Work\\01_Code\\workspace1\\.venv\\Scripts\\python.exe",
       "args": [
