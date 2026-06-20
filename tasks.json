@@ -1,0 +1,46 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Stop Serial Monitor",
+      "type": "shell",
+      "command": "d:\\AI_Work\\01_Code\\workspace1\\.venv\\Scripts\\python.exe",
+      "args": [
+        "d:\\AI_Work\\01_Code\\workspace1\\niu\\scripts\\tools\\stop_monitor.py"
+      ],
+      "options": {
+        "shell": {
+          "executable": "C:\\Windows\\System32\\cmd.exe",
+          "args": ["/c"]
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Start Serial Monitor (COM12)",
+      "type": "shell",
+      "command": "d:\\AI_Work\\01_Code\\workspace1\\.venv\\Scripts\\python.exe",
+      "args": [
+        "d:\\AI_Work\\01_Code\\workspace1\\niu\\scripts\\tools\\serial_monitor.py",
+        "COM12",
+        "115200"
+      ],
+      "options": {
+        "shell": {
+          "executable": "C:\\Windows\\System32\\cmd.exe",
+          "args": ["/c"]
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "isBackground": true,
+      "problemMatcher": []
+    }
+  ]
+}
