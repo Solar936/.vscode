@@ -2,6 +2,7 @@
     // Clangd configuration
     "clangd.arguments": [
         "--compile-commands-dir=${workspaceFolder}/niu/build",
+        "--query-driver=D:/zephyr-sdk-0.17.4/*/bin/*",
         "--background-index",
         "--clang-tidy"
     ],
